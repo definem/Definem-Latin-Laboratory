@@ -17,7 +17,4 @@ Tibbiyot lotin tili soʻzlarini yodlash uchun kichik test sayti. Lotincha soʻz 
 
 Bir xil lotincha soʻz ikki marta yozilib qolsa, sayt faqat birinchisini oladi.
 
-## Ishga tushirish
-
-`index.html` faylini brauzerda ochish kifoya. Internetga chiqarish uchun GitHub Pages yoki Netlify/Vercel'dan foydalaning.
 # Latin_vocab_tester
