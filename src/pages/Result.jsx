@@ -8,7 +8,7 @@ export default function Result({ result, onAgain, onHome, onReview }) {
       <section className="panel result-panel">
         <div className="result-icon"><Trophy size={28}/></div>
         <div className="section-kicker">TEST COMPLETE</div>
-        <h2>{result.name ? `${result.name}, natijang` : "Natijang"}</h2>
+        <h2>{result.name ? `${result.name}, natijangiz` : "Natijangiz"}</h2>
         <div className="score-ring" style={{"--score": `${pct * 3.6}deg`}}>
           <div><strong>{pct}%</strong><span>{result.score}/{result.total}</span></div>
         </div>
