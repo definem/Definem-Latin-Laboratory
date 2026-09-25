@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
+import { inCategory } from "../data/words";
 
 export default function Vocabulary({ words, categories }) {
   const [query,setQuery] = useState("");
   const [cat,setCat] = useState("Barchasi");
   const filtered = useMemo(() => words.filter(w =>
-    (cat === "Barchasi" || w.category === cat) &&
+    inCategory(w, cat) &&
     (`${w.latin} ${w.uzbek}`.toLowerCase().includes(query.toLowerCase()))
   ), [query,cat,words]);
 
@@ -17,7 +18,7 @@ export default function Vocabulary({ words, categories }) {
         <select className="filter-select" value={cat} onChange={e=>setCat(e.target.value)}>{categories.map(c=><option key={c}>{c}</option>)}</select>
       </div>
       <div className="word-grid">
-        {filtered.map(w => <article className="word-card" key={w.id}><div className="word-card-top"><span>{w.category}</span><span>{w.difficulty}</span></div><h3>{w.latin}</h3><p>{w.uzbek}</p></article>)}
+        {filtered.map(w => <article className="word-card" key={w.id}><div className="word-card-top"><span>{cat !== "Barchasi" ? cat : w.category}</span><span>{w.difficulty}</span></div><h3>{w.latin}</h3><p>{w.uzbek}</p></article>)}
       </div>
     </main>
   )

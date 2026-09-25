@@ -9,7 +9,7 @@ import Vocabulary from "./pages/Vocabulary";
 import Progress from "./pages/Progress";
 import Leaderboard from "./pages/Leaderboard";
 import Anatomy from "./pages/Anatomy";
-import { words, categories } from "./data/words";
+import { words, categories, inCategory } from "./data/words";
 import { lessons, anatomyTerms, lessonById } from "./data/anatomy";
 import { buildQuestions } from "./utils/quiz";
 
@@ -45,7 +45,7 @@ export default function App() {
     return ()=>clearInterval(timer);
   },[page]);
 
-  const availableWords = useMemo(() => settings.category==="Barchasi" ? words : words.filter(w=>w.category===settings.category),[settings.category]);
+  const availableWords = useMemo(() => words.filter(w=>inCategory(w,settings.category)),[settings.category]);
 
   useEffect(()=>{
     if(settings.count > availableWords.length) setSettings(s=>({...s,count:Math.min(10,availableWords.length)}));
@@ -118,7 +118,7 @@ export default function App() {
       {page==="vocabulary" && <Vocabulary words={words} categories={categories}/>}
       {page==="progress" && <Progress history={history}/>}
       {page==="leaderboard" && <Leaderboard history={history}/>}
-      <footer><span>By developer_gurl - definem</span><p>Duo qilib qo'ying, shuncha mehnat ketdi 😅</p></footer>
+      <footer><span>By definem | DNT - 923</span><p>Duo qilib qo'ying, shuncha mehnat ketdi 😅</p></footer>
     </div>
   );
 }

@@ -1,4 +1,6 @@
-export const words = [
+import { groupWords } from "./groupWords";
+
+const baseWords = [
   { id: 1, latin: "aqua", uzbek: "suv", category: "Umumiy", difficulty: "Oson" },
   { id: 2, latin: "cor", uzbek: "yurak", category: "A'zolar", difficulty: "Oson" },
   { id: 3, latin: "oculus", uzbek: "ko‘z", category: "Anatomiya", difficulty: "Oson" },
@@ -61,4 +63,39 @@ export const words = [
   { id: 60, latin: "anterior", uzbek: "oldingi", category: "Umumiy", difficulty: "Oson" }
 ];
 
-export const categories = ["Barchasi", ...new Set(words.map((word) => word.category))];
+// Eski va yangi (guruh darsligi) lug'atni birlashtirish.
+// Ikkala ro'yxatda ham bor so'z bitta bo'lib qoladi: eski id va kategoriyasi
+// saqlanadi, lotincha lug'at shakli yangisidan olinadi va so'z
+// "Guruh darsligi lug'atlari" kategoriyasiga ham kiradi.
+const head = (latin) => latin.split(",")[0].trim().toLowerCase();
+
+// Tarjimasi farq qilgan so'zlar uchun birlashtirilgan ma'no
+const mergedMeaning = {
+  caput: "bosh; boshcha",
+  brachium: "yelka (yelka va tirsak oralig‘i)",
+  femur: "son; son suyagi",
+  cranium: "kalla (bosh) suyagi",
+  nervus: "nerv, asab",
+  facies: "yuz; yuza, sath",
+};
+
+const groupByHead = new Map(groupWords.map((g) => [head(g.latin), g]));
+const merged = baseWords.map((w) => {
+  const g = groupByHead.get(head(w.latin));
+  if (!g) return w;
+  return {
+    ...w,
+    latin: g.latin,
+    uzbek: mergedMeaning[head(w.latin)] ?? w.uzbek,
+    groups: [g.category],
+  };
+});
+const baseHeads = new Set(baseWords.map((w) => head(w.latin)));
+
+export const words = [...merged, ...groupWords.filter((g) => !baseHeads.has(head(g.latin)))];
+
+// So'z tanlangan kategoriyaga kiradimi (asosiy yoki qo'shimcha kategoriya)
+export const inCategory = (word, cat) =>
+  cat === "Barchasi" || word.category === cat || (word.groups ?? []).includes(cat);
+
+export const categories = ["Barchasi", ...new Set(words.flatMap((word) => [word.category, ...(word.groups ?? [])]))];
