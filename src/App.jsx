@@ -118,7 +118,7 @@ export default function App() {
       {page==="vocabulary" && <Vocabulary words={words} categories={categories}/>}
       {page==="progress" && <Progress history={history}/>}
       {page==="leaderboard" && <Leaderboard history={history}/>}
-      <footer><span>By definem | DNT - 923</span><p>Duo qilib qo'ying, shuncha mehnat ketdi 😅</p></footer>
+      <footer><span>By definem | DNT - 923</span><span>Duo qilib qo'ying, shuncha mehnat ketdi 😅</span></footer>
     </div>
   );
 }
