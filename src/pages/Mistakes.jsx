@@ -10,7 +10,7 @@ export default function Mistakes({ mistakes, onBack, onPractice }) {
       </div>
       {mistakes.length === 0 ? <div className="empty">Hozircha xato yo‘q. Shubhali darajada yaxshi.😎</div> :
       <div className="mistake-list">
-        {mistakes.map((m,i) => <article key={`${m.id}-${i}`}><div><span className="latin-small">{m.latin}</span><b>{m.uzbek ?? m.correct}</b></div><div className="wrong-answer">Sening javobing: {m.selected}</div></article>)}
+        {mistakes.map((m,i) => <article key={`${m.id}-${i}`}><div><span className="latin-small">{m.latin}</span><b>{m.uzbek ?? m.correct}</b></div><div className="wrong-answer">Javobingiz: {m.selected}</div></article>)}
       </div>}
     </main>
   )

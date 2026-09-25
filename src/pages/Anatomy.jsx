@@ -80,7 +80,7 @@ function LessonList({ onOpen, onStart }) {
           <button className="primary-btn full" disabled={pool.length < 4} onClick={() => onStart([...picked], mode, count)}>
             <Play size={18} /> Testni boshlash
           </button>
-          {pool.length < 4 && <p className="muted small">Kamida bitta mavzuni tanla.</p>}
+          {pool.length < 4 && <p className="muted small">Kamida bitta mavzuni tanlang.</p>}
         </section>
 
         <section className="term-search">
@@ -88,7 +88,7 @@ function LessonList({ onOpen, onStart }) {
           <label className="search-box"><Search size={18} /><input placeholder="Masalan: caput yoki boshcha" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
           {query && (
             <div className="search-results">
-              {found.length === 0 && <div className="empty">“{query}” bo‘yicha termin yo‘q. Boshqacha yozib ko‘r.</div>}
+              {found.length === 0 && <div className="empty">“{query}” bo‘yicha termin yo‘q. Boshqacha yozib ko‘ring.</div>}
               {found.map((t) => (
                 <button key={t.id} className="term-row" onClick={() => onOpen(t.lesson, t.id)}>
                   <span className="term-latin">{t.latin}</span>
