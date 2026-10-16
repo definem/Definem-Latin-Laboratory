@@ -1,5 +1,7 @@
 # DefLab
 
+hehehe
+
 Medical Latin vocabulary quiz built with React + Vite.
 
 ## Run
