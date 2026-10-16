@@ -15,8 +15,15 @@ const dayStr = (offset = 0) =>
 
 export default async function handler(req, res) {
   const msg = req.body?.message;
-  if (!msg || String(msg.chat.id) !== String(process.env.TG_CHAT_ID))
-    return res.status(200).end();
+    if (!msg) return res.status(200).end();
+
+    if (String(msg.chat.id) !== String(process.env.TG_CHAT_ID)) {
+      await send(
+        msg.chat.id,
+        `Ruxsat yo'q. Sizning chat ID: ${msg.chat.id}\nVercel'dagi TG_CHAT_ID: ${process.env.TG_CHAT_ID ? "o'rnatilgan" : "YO'Q"}`,
+      );
+      return res.status(200).end();
+    }
 
   const text = (msg.text || "").trim();
 
