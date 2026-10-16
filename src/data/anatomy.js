@@ -1,7 +1,3 @@
-// Anatomiya darslari lug'ati.
-// Har bir termin: [lotincha, o'zbekcha, rasm?, qism(lar)?]
-// rasm — diagrams.jsx dagi kalit; qism — shu rasmdagi yoritiladigan qism kaliti.
-// Rasmsiz terminlar ham qo'shilaverishi mumkin: faqat [lotincha, o'zbekcha].
 
 const raw = [
   {
@@ -199,10 +195,128 @@ const raw = [
       ["hallux", "oyoqning bosh barmog‘i", "pes", "hallux"],
     ],
   },
+  {
+    id: "sifat",
+    title: "I–II turlanish otlari va sifatlar",
+    latin: "Substantiva et adjectiva",
+    note: "I va II turlanish otlari, I–II guruh sifatlari va qiyosiy darajadagi sifatlar",
+    diagrams: [],
+    terms: [
+      ["bursa, ae f", "halta"],
+      ["pleura, ae f", "plevra"],
+      ["valvula, ae f", "qopqoq"],
+      ["vena portae", "darvoza vena"],
+      ["cerebellum, i n", "miyacha"],
+      ["cerebrum, i n", "katta bosh miya"],
+      ["encephalon, i n", "bosh miya"],
+      ["ganglion, i n", "asab tuguni, gangliy"],
+      ["nodus, i m", "tugun"],
+      ["nervus, i m", "asab"],
+      ["oculus, i m", "ko‘z"],
+      ["ostium, i n", "kirish teshigi"],
+      ["cavus, a, um", "bo‘sh (kavak)"],
+      ["cutaneus, a, um", "teriga oid"],
+      ["ischiadicus, a, um", "quymuchga oid"],
+      ["laryngeus, a, um", "hiqildoqqa oid"],
+      ["latus, a, um", "keng"],
+      ["longus, a, um", "uzun"],
+      ["magnus, a, um", "katta"],
+      ["mastoideus, a, um", "so‘rg‘ichsimon"],
+      ["parvus, a, um", "kichik"],
+      ["pharyngeus, a, um", "halqumga oid"],
+      ["profundus, a, um", "chuqur"],
+      ["squamosus, a, um", "tangachasimon"],
+      ["trapezoideus, a, um", "trapetsiyasimon"],
+      ["auricularis, e", "quloqqa oid"],
+      ["dorsalis, e", "orqaga oid"],
+      ["facialis, e", "yuzga oid"],
+      ["lacrimalis, e", "ko‘z yoshga oid"],
+      ["lingualis, e", "tilga oid"],
+      ["muscularis, e", "mushakka oid"],
+      ["parietalis, e", "tepa (parietal) suyakka oid"],
+      ["ventralis, e", "old (qorin) ga oid"],
+      ["anterior, ius", "oldingi"],
+      ["inferior, ius", "quyi"],
+      ["major, jus", "katta"],
+      ["minor, us", "kichik"],
+      ["posterior, ius", "orqa (ortki)"],
+      ["superior, ius", "yuqori"],
+    ],
+  },
+  {
+    id: "iii-erkak",
+    title: "III turlanish: erkak jins va istisnolar",
+    latin: "Declinatio III (masculina et exceptiones)",
+    note: "III turlanishdagi erkak jinsdagi otlar va istisno so‘zlar",
+    diagrams: [],
+    terms: [
+      ["apex, icis m", "uchi, (til, burun) uchi"],
+      ["cortex, icis m", "po‘stloq, qobiq"],
+      ["flos, oris m", "gul"],
+      ["homo, inis m", "odam"],
+      ["humor, oris m", "namlik, tananing suyuq qismi"],
+      ["liquor, oris m", "(orqa miya) suyuqligi"],
+      ["paries, etis m", "devor"],
+      ["pulmo, onis m", "o‘pka"],
+      ["trochanter, eris m", "ko‘st"],
+      ["venter, ntris m", "qorincha, qorin"],
+      ["vertex, icis m", "cho‘qqi"],
+      ["vomer, eris m", "dimog‘"],
+      ["pes, pedis m", "oyoq"],
+      ["stapes, edis m", "uzangi"],
+      ["ureter, eris m", "siydik yoli"],
+      ["os, oris n", "og‘iz"],
+      ["os, ossis n", "suyak"],
+      ["cor, cordis n", "yurak"],
+      ["tuber, eris n", "do‘mboq"],
+      ["mater, tris f", "ona; miya pardasi"],
+      ["dura mater", "miyaning qattiq pardasi"],
+      ["pia mater", "miyaning yumshoq pardasi"],
+      ["gaster, tris f", "oshqozon"],
+    ],
+  },
+  {
+    id: "iii-ayol",
+    title: "III turlanish: ayol jins va boshqa otlar",
+    latin: "Declinatio III (feminina)",
+    note: "III turlanishdagi ayol jinsdagi otlar (va collum)",
+    diagrams: [],
+    terms: [
+      ["a. carotis, tidis f", "uyqu arteriyasi"],
+      ["appendix, icis f", "appendiks, o‘siq"],
+      ["articulatio, onis f", "bo‘g‘im"],
+      ["auris, is f", "quloq"],
+      ["basis, is f", "asos"],
+      ["cartilago, inis f", "tog‘ay"],
+      ["cavitas, atis f", "bo‘shliq, chuqurlik"],
+      ["cervix, icis f", "bo‘yin; bo‘yincha"],
+      ["collum, i n", "bo‘yin; bo‘yincha"],
+      ["cutis, is f", "teri"],
+      ["frons, frontis f", "peshona"],
+      ["gl. parotis, tidis f", "quloq oldi bezi"],
+      ["meninx, ngis f", "miya pardasi"],
+      ["pars, partis f", "qism"],
+      ["radix, icis f", "ildiz"],
+      ["pelvis, is f", "tos"],
+      ["pelvis renalis", "buyrak jomchasi"],
+      ["pyramis, idis f", "piramida"],
+      ["regio, onis f", "soha"],
+      ["symphysis, is f", "simfiz (birikish)"],
+      ["synchondrosis, is f", "sinxondrosis (tog‘ay yordamida ikki suyakning birikishi)"],
+      ["tuberositas, atis f", "g‘adir-budurlik"],
+      ["bilis, is f", "o‘t, safro"],
+      ["extremitas, atis f", "qo‘l-oyoqlar uchi, oxiri"],
+      ["impressio, onis f", "botiqlik"],
+      ["iris, idis f", "ko‘zning kamalak pardasi"],
+      ["lens, lentis f", "ko‘z gavhari"],
+      ["phalanx, ngis f", "panja suyagi"],
+      ["pubes, is f", "qov (qov suyagi)"],
+    ],
+  },
 ];
-
+ 
 const slug = (s) => s.toLowerCase().replace(/[^a-z]+/g, "-");
-
+ 
 export const lessons = raw.map((l) => ({
   ...l,
   terms: l.terms.map(([latin, uzbek, diagram, part, anchor]) => ({
@@ -216,6 +330,6 @@ export const lessons = raw.map((l) => ({
     anchor: anchor || (Array.isArray(part) ? part[0] : part) || null,
   })),
 }));
-
+ 
 export const anatomyTerms = lessons.flatMap((l) => l.terms);
 export const lessonById = Object.fromEntries(lessons.map((l) => [l.id, l]));
