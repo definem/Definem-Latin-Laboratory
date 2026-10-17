@@ -26,7 +26,6 @@ export default async function handler(req, res) {
   await redis.expire(`views:${day}`, TTL);
   await redis.expire(`uniq:${day}`, TTL);
 
-  // Har kunning yangi odami uchun qisqa xabar (xohlamasangiz bu blokni o'chiring)
   if (isNew) {
     const country = req.headers["x-vercel-ip-country"] || "?";
     await fetch(

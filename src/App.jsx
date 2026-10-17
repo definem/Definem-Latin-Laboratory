@@ -18,6 +18,25 @@ const read = (key, fallback) => {
 };
 const allItems = new Map([...words, ...anatomyTerms].map((w) => [w.id, w]));
 
+function useTrackVisit() {
+  useEffect(() => {
+    if (sessionStorage.getItem("tracked")) return;
+    sessionStorage.setItem("tracked", "1");
+
+    let id = localStorage.getItem("vid");
+    if (!id) {
+      id = crypto.randomUUID().slice(0, 8);
+      localStorage.setItem("vid", id);
+    }
+
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ visitorId: id }),
+    }).catch(() => {});
+  }, []);
+}
+
 export default function App() {
   const [page,setPage] = useState("home");
   const [dark,setDark] = useState(() => read("latin-theme", true));
