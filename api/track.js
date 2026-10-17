@@ -1,5 +1,9 @@
 import { Redis } from "@upstash/redis";
-const redis = Redis.fromEnv();
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});
 
 const tashkentDay = () =>
   new Date(Date.now() + 5 * 3600 * 1000).toISOString().slice(0, 10);

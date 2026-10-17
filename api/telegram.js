@@ -1,5 +1,9 @@
 import { Redis } from "@upstash/redis";
-const redis = Redis.fromEnv();
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});
 
 const send = async (chat_id, text) => {
   const r = await fetch(
@@ -30,7 +34,6 @@ export default async function handler(req, res) {
           "redis ok | TG_CHAT_ID: " + (process.env.TG_CHAT_ID ? "bor" : "YO'Q"),
         );
     }
-
   } catch (e) {
     console.log(e);
     return res.status(200).send("XATO: " + e.message);
