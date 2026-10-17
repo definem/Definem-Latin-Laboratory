@@ -21,36 +21,18 @@ const dayStr = (offset = 0) =>
 console.log("Keldi:", JSON.stringify(req.body));
 
 export default async function handler(req, res) {
-  const msg = req.body?.message;
-    if (!msg) return res.status(200).end();
-
-    if (String(msg.chat.id) !== String(process.env.TG_CHAT_ID)) {
-      await send(
-        msg.chat.id,
-        `Ruxsat yo'q. Sizning chat ID: ${msg.chat.id}\nVercel'dagi TG_CHAT_ID: ${process.env.TG_CHAT_ID ? "o'rnatilgan" : "YO'Q"}`,
-      );
-      return res.status(200).end();
+  try {
+    if (req.method === "GET") {
+      await redis.set("ping", "ok");
+      return res
+        .status(200)
+        .send(
+          "redis ok | TG_CHAT_ID: " + (process.env.TG_CHAT_ID ? "bor" : "YO'Q"),
+        );
     }
 
-  const text = (msg.text || "").trim();
-
-  if (text === "/stats" || text === "/start") {
-    const lines = [];
-    let totalUniq = 0,
-      totalViews = 0;
-    for (let i = 0; i < 7; i++) {
-      const d = dayStr(i);
-      const views = Number((await redis.get(`views:${d}`)) || 0);
-      const uniq = await redis.scard(`uniq:${d}`);
-      totalUniq += uniq;
-      totalViews += views;
-      lines.push(`${i === 0 ? "Bugun" : d}: ${uniq} odam / ${views} tashrif`);
-    }
-    await send(
-      msg.chat.id,
-      `📊 Oxirgi 7 kun\n\n${lines.join("\n")}\n\nJami: ${totalUniq} odam / ${totalViews} tashrif`,
-    );
+  } catch (e) {
+    console.log(e);
+    return res.status(200).send("XATO: " + e.message);
   }
-
-  res.status(200).end();
 }
